@@ -1,15 +1,14 @@
-numRows = 5
 
-arr = [[1]] if numRows == 1 else [[1][1,1]]
-    
-for i in range(numRows):
-    subArr = []
-    for j in range(i+1):
-        if j == 0 or j == numRows:
-            subArr.append(1)
-        else:
-            subArr.append(arr[i-1])
-    arr.append(subArr)  
-    # print(arr[0][0])
-#     subArr=[]   
-print(arr)         
+def generate(numRows):
+    arr = [] 
+    arr.append([1])
+    for i in range(numRows-1):
+        newArr = [1]
+        for j in range(i):
+            newArr.append(arr[i][j]+arr[i][j+1])
+        newArr.append(1)
+        arr.append(newArr)
+    return arr        
+
+callValue = generate(5)
+print(callValue)    
