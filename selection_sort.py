@@ -1,26 +1,22 @@
 # Selection sort in Python
 
 
-def selectionSort(array, size):
+def selectionSort(nums):
    
-    for step in range(size):
-        min_idx = step
+    for step in range(len(nums)):
+            min_index = step
+            m_str = str(nums[step])
+            
+            for i in range(step+1,len(nums)):
+                if nums[i] < nums[min_index]:
+                    min_index = i
 
-        for i in range(step + 1, size):
-         
-            # to sort in descending order, change > to < in this line
-            # select the minimum element in each loop
-            if array[i] < array[min_idx]:
-                min_idx = i
-        
-        # put min at the correct position
-        temp = array[step]
-        array[step] = array[min_idx]
-        array[min_idx] = temp 
+            temp = nums[step]
+            nums[step] = nums[min_index]
+            nums[min_index] = temp 
 
 
-data = [-2, 45, 0, 11, -9]
-size = len(data)
-selectionSort(data, size)
+data = [3,30,34,5,9]
+selectionSort(data)
 print('Sorted Array in Ascending Order:')
 print(data)
