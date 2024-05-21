@@ -1,23 +1,19 @@
 from functools import reduce
 
 def generate(nums1, nums2):
-    nums1.sort()
-    nums2.sort()
     ans = []
-    for i in range(len(nums1)):
-        for j in range(1,len(nums2)):
-            if nums1[i] == nums2[j]:
-                
-                if nums2[j] > nums2[j-1]:
-                    ans.append(nums2[j])
-                elif nums2[j] < reduce(max, nums2):
-                    ans.append(reduce(max, nums2))
-                else:
-                    ans.append(-1)   
-            elif j == len(nums2)-1 and nums1[i] == nums2[len(nums2)-1]:
-                ans.append(-1)
-                        
-    return ans        
+    
+    for i in nums1:
+        c=0
+        for j in range(nums2.index(i) + 1, len(nums2)):
+            if nums2[j] > i:
+                ans.append(nums2[j])
+                c+=1
+                break
+
+        if c == 0:
+            ans.append(-1)   
+    return ans     
 
 # nums1 = [1,3,5,2,4]
 # nums2 = [6,5,4,3,2,1,7]
